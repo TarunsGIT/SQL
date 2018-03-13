@@ -1,0 +1,111 @@
+CREATE TABLE part(
+id INT(10) NOT NULL,
+NAME VARCHAR(10),
+color VARCHAR(10),
+unit_id INT(10) DEFAULT NULL,
+PRIMARY KEY (id)-----------TABLE PRIMARY KEY CONSTRAINT----------------------
+);
+
+CREATE TABLE CUSTOMER_DETAILS(
+Cust_Id INT(5) NOT NULL,
+Cust_Last_Name VARCHAR(10)   NOT NULL,
+Cust_Mid_Name  VARCHAR(10),
+Cust_First_Name VARCHAR(10)   NOT NULL,
+Account_No INT(10)   PRIMARY KEY,-----------------COLUMN CONSTRAINT-------------------------
+Account_Type VARCHAR(20)   NOT NULL,
+Bank_Branch VARCHAR(15)   NOT NULL,
+Cust_Email VARCHAR(20)  NOT NULL
+);
+
+delete from table1
+USING table1, table1 as vtable
+WHERE (NOT table1.ID=vtable.ID)
+AND (table1.field_name=vtable.field_name)
+
+----------------------------------------------------TO SEE ALL PERMANENT TABLES IN DATABASE---------------------------------------
+SHOW TABLES FROM `employee_dept`;
+
+-----------------------------------------------------GET TABLE DETAILS------------------------------------------------------------
+SHOW COLUMNS FROM `employee_dept`.`department`;
+
+----------------TO COPY TABLE AS IT IS INCLUDING DATA----------------- 
+
+CREATE TABLE CUST_DETAILS AS 
+SELECT * FROM CUSTOMER_DETAILS
+
+--------TO COPY ONLY THE TABLE DEFINATION------------------------- 
+
+CREATE TABLE CUST_DETAILS AS
+
+SELECT * FROM CUST_DETAILS
+WHERE 1=2;
+
+--------------------------------------ALTER TABLE----------------------------------------
+
+ALTER TABLE `CUSTOMER_DETAILS`
+ADD CONTACT_No CHAR(10);
+
+ALTER TABLE `employee_backup`
+DROP COLUMN `Employee_SALARY`;
+
+ALTER TABLE `CUSTOMER_DETAILS`
+MODIFY CONTACT_No CHAR(12);
+
+ALTER TABLE `CUSTOMER_DETAILS`
+MODIFY CONTACT_No CHAR(12)  NOT NULL;
+
+ALTER TABLE `CUSTOMER_DETAILS` 
+ADD CONSTRAINT UNIQUE (`CONTACT_No`);
+
+
+------------------------------------------------SIMPLE PRIMARY KEY---------------------------------
+
+ALTER TABLE COUSTOMER_DETAILS
+ADD CONSTRAINT PRIMARY KEY(Cust_id);
+
+ALTER TABLE CUSTOMER_DETAILS
+ADD CONSTRFAINT PRIMARY KEY(Acount_No,Cust_Id);--------------COMPOSTIE PRIMARY KEY--------------------
+
+
+------------------------------------DROP SIMPLE/COMPOSTIE PRIMARY KEY-------------------------------
+
+ALTER TABLE CUSTOMER_DETAILS
+DROP PRIMARY KEY;
+
+----------------------------------ADDING FORIEGN KEY-------------------------
+
+ALTER TABLE CUSTOMER_TRANSACTION
+ADD CONSTRAINT FORIEGN KEY(Account_No) 
+REFERENCE CUSTOMER_DETAILS(Account_No)
+
+------------------------------------ADDING CHECK CONSTRAINT------------------------------------
+
+ALTER TABLE CUSTOMER_DETAILS
+ADD CONSTRAINT CHECK (
+
+`Cust_Id` BETWEEN 101 AND 201
+);
+
+--------------------------------------CREATING SIMPLE INDEX FOR TABLE ON COLUMN NAME---------------------------
+
+CREATE UNIQUE INDEX Cust_Idx
+On CUSTOMER_DETAILS (Cust_Id);
+
+CREATE UNIQUE INDEX ID_Account_No_Idx
+ON CUSTOMER_DETAILS (Cust_Id,Account_No);
+
+
+DROP INDEX ID_Account_No_Idx
+
+--------------------------------------------INSERT INTO TABLES-----------------------------------
+
+INSERT INTO CUSTOMER_DETAILS (Cust_Id,Cust_Last_Name,Cust_Mid_Name,Cust_First_Name,Account_No,Account_Type,Bank_Branch,Cust_Email,CONTACT_No)
+
+VALUES(101,'Costner','A','Kevin',3350,'Savings','Brighton','Costner_Kevin@times.com',1013350);
+
+
+INSERT INTO CUSTOMER_DETAILS 
+
+VALUES(105,'Jones','E','Simon',2389,'Checkings','Brighton','Jones_Simon@rediffmail.com',1052389);
+
+

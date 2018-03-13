@@ -1,0 +1,15 @@
+CREATE TABLE `st_college` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `PHONE_NO` varchar(255) DEFAULT NULL,
+  `CREATED_BY` varchar(255) DEFAULT NULL,
+  `MODIFIED_BY` varchar(255) DEFAULT NULL,
+  `CREATED_DATETIME` datetime DEFAULT NULL,
+  `MODIFIED_DATETIME` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `NAME_IDX` (`NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;

@@ -1,0 +1,16 @@
+/*Table structure for table `course` */
+
+DROP TABLE IF EXISTS `course`;
+
+CREATE TABLE `course` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(45) default NULL,
+  `DESCRIPTION` varchar(45) default NULL,
+   `DURATION` bigint(20) default NULL,
+  `CREATED_BY` varchar(45) default NULL,
+  `MODIFIED_BY` varchar(45) default NULL,
+  `CREATED_DATETIME` timestamp NULL default NULL,
+  `MODIFIED_DATETIME` varchar(45) default NULL,
+  PRIMARY KEY  (`ID`),
+  KEY `NAME_IDX` (`NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
